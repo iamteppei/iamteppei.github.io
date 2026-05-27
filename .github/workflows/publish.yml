@@ -1,0 +1,70 @@
+name: Jekyll CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+
+      - name: Validate post front matter
+        run: |
+          ruby <<'RUBY'
+          require "yaml"
+
+          required = %w[layout title date]
+          errors = []
+
+          Dir.glob("_posts/*/*/*/*.md").sort.each do |path|
+            content = File.read(path)
+
+            unless content.start_with?("---\n")
+              errors << "#{path}: missing YAML front matter start"
+              next
+            end
+
+            parts = content.split(/^---\s*$\n/, 3)
+            front_matter = parts[1]
+            unless front_matter
+              errors << "#{path}: malformed YAML front matter"
+              next
+            end
+
+            begin
+              data = YAML.safe_load(front_matter, permitted_classes: [Time], aliases: false) || {}
+            rescue Psych::SyntaxError => e
+              errors << "#{path}: invalid YAML (#{e.message.lines.first.strip})"
+              next
+            end
+
+            missing = required.reject { |key| data[key] && !data[key].to_s.strip.empty? }
+            errors << "#{path}: missing required keys: #{missing.join(', ')}" unless missing.empty?
+          end
+
+          if errors.any?
+            warn errors.join("\n")
+            exit 1
+          end
+
+          puts "Front matter validation passed."
+          RUBY
+
+      - name: Build site
+        env:
+          JEKYLL_ENV: production
+        run: bundle exec jekyll build --strict_front_matter
