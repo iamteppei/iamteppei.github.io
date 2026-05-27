@@ -1,0 +1,5 @@
+# Production-only overrides.
+# Keep this file free of secrets and environment-specific values in version control.
+
+# Add your GA4 measurement ID here in your deployment pipeline as needed.
+google_analytics: "G-VMRGNFZPHV"

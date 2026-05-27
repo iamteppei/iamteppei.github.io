@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% assign page_title = page.title | default: site.title %}
+    {% assign page_description = page.description | default: site.description %}
+    {% assign canonical_url = page.url | absolute_url %}
+    <title>{% if page.title %}{{ page_title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <meta name="description" content="{{ page_description }}" />
+    <link rel="canonical" href="{{ canonical_url }}" />
+    <meta property="og:title" content="{{ page_title }}" />
+    <meta property="og:description" content="{{ page_description }}" />
+    <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}" />
+    <meta property="og:url" content="{{ canonical_url }}" />
+    <meta property="og:site_name" content="{{ site.title }}" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="{{ page_title }}" />
+    <meta name="twitter:description" content="{{ page_description }}" />
+    <link rel="alternate" type="application/atom+xml" title="{{ site.title }} Feed" href="{{ '/feed.xml' | relative_url }}" />
+    <link
+      rel="stylesheet"
+      href="{{ '/assets/css/style.css' | relative_url }}"
+    />
+
+    {% if site.google_analytics %}
+    <!-- Google Analytics 4 - Async loading with security best practices -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      // Configure GA4 with privacy-friendly settings
+      gtag("config", "{{ site.google_analytics }}", {
+        cookie_flags: "SameSite=Lax;Secure", // Prevent cross-site tracking (requires HTTPS)
+        allow_google_signals: false, // Disable Google Signals (demographics/interests)
+        allow_ad_personalization_signals: false, // Disable ad personalization
+      });
+    </script>
+    {% endif %}
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header role="banner" class="header-content">
+      <div class="container">
+        <h1>
+          <a
+            href="{{ '/' | relative_url }}"
+            aria-label="{{ site.title }} – go to home"
+            >{{ site.title }}</a
+          >
+        </h1>
+        <p>{{ site.description }}</p>
+      </div>
+    </header>
+
+    <main id="main-content" class="container" tabindex="-1">{{ content }}</main>
+
+    <footer role="contentinfo" class="footer-content">
+      <div class="container">
+        <p>&copy; 2026 {{ site.title }}. All rights reserved.</p>
+      </div>
+    </footer>
+
+    {% if page.mermaid %}
+    <script type="module">
+      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+      document.querySelectorAll("pre > code.language-mermaid").forEach((el) => {
+        const div = document.createElement("div");
+        div.className = "mermaid";
+        div.textContent = el.textContent;
+        el.parentElement.replaceWith(div);
+      });
+      mermaid.initialize({ startOnLoad: false });
+      await mermaid.run();
+    </script>
+    {% endif %}
+  </body>
+</html>

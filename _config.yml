@@ -1,0 +1,37 @@
+# Site settings
+title: IamTeppei
+description: Do one thing and do it well!
+baseurl: ""
+url: "https://iamteppei.github.io"
+
+# Build settings
+markdown: kramdown
+permalink: /:year/:month/:day/:title/
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-sitemap
+
+# Pagination settings
+paginate: 5
+paginate_path: "/page:num/"
+
+# Collections
+# Note: _posts collection is built-in to Jekyll and doesn't need to be declared
+
+# Google Analytics
+# Add your Google Analytics 4 measurement ID here (format: G-XXXXXXXXXX)
+# Leave empty in version control and set environment-specific values via config overlays
+google_analytics: ""
+
+# Exclude from build
+exclude:
+  - .bundle
+  - README.md
+  - LICENSE
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - _posts/POST_ORGANIZATION_GUIDE.md

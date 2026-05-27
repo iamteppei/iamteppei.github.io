@@ -1,0 +1,48 @@
+---
+layout: default
+title: Home
+---
+
+<section class="blog-list-container" aria-label="Blog posts">
+  {% if site.posts.size > 0 %}
+  <ul class="blog-list">
+    {% if paginator %}
+      {% assign posts = paginator.posts %}
+    {% else %}
+      {% assign posts = site.posts %}
+    {% endif %}
+
+    {% assign excerpt_length = site.excerpt_length | default: 180 %}
+    {% for post in posts %}
+    <li class="blog-item">
+      <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+      <p class="blog-meta">
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
+      </p>
+      <p class="blog-excerpt">{{ post.excerpt | strip_html | truncate: excerpt_length }}</p>
+      <a href="{{ post.url | relative_url }}" class="read-more">Read more<span class="visually-hidden"> about {{ post.title }}</span> &rarr;</a>
+    </li>
+    {% endfor %}
+  </ul>
+
+  {% if paginator %}
+  <nav class="pagination" aria-label="Blog post pagination">
+    {% if paginator.previous_page %}
+      <a href="{{ paginator.previous_page_path | relative_url }}" class="pagination-link">&larr; Newer Posts</a>
+    {% else %}
+      <span class="pagination-link disabled">&larr; Newer Posts</span>
+    {% endif %}
+
+    <span class="pagination-info">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
+
+    {% if paginator.next_page %}
+      <a href="{{ paginator.next_page_path | relative_url }}" class="pagination-link">Older Posts &rarr;</a>
+    {% else %}
+      <span class="pagination-link disabled">Older Posts &rarr;</span>
+    {% endif %}
+  </nav>
+  {% endif %}
+  {% else %}
+  <p>No posts yet. Check back soon!</p>
+  {% endif %}
+</section>
