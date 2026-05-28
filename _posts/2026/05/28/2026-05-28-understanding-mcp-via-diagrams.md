@@ -4,6 +4,8 @@ title: "Understanding MCP via Diagrams"
 date: 2026-05-28 22:18:40 +1200
 ---
 
+
+
 ## High-Level MCP Architecture
 
 ```mermaid
@@ -59,3 +61,136 @@ sequenceDiagram
     Client->>Server: Shutdown Request
     Server->>Client: Session Closed
 ```
+
+## Data Layer Features
+
+```mermaid
+mindmap
+  root((MCP Data Layer))
+
+    Lifecycle Management
+      Initialization
+      Execution
+      Shutdown
+
+    Server Features
+      Tools
+      Resources
+      Prompts
+
+    Client Features
+      Sampling
+        "Server asks client's AI/LLM"
+      Elicitation
+        "Ask user for more info"
+      Logging
+        "Debugging & logs"
+
+    Utility Features
+      Notifications
+      Progress Tracking
+```
+
+## Transport Layer & Stateful Sessions
+
+```mermaid
+flowchart LR
+
+    subgraph Local["Local Connection"]
+        STDIO["stdio"]
+        Process["Session == Process"]
+    end
+
+    subgraph Remote["Remote Connection"]
+        HTTP["Streaming HTTP"]
+        Session["mcp-session-id Header"]
+    end
+
+    STDIO --> Process
+    HTTP --> Session
+```
+
+## OAuth 2 Security Flow for MCP
+
+```mermaid
+sequenceDiagram
+    participant Client
+    participant MCPServer as MCP Server
+    participant AuthServer as Authorization Server
+
+    Client->>MCPServer: Access Protected Resource
+    MCPServer-->>Client: 401 Unauthorized + WWW-Authenticate
+
+    Client->>MCPServer: Request Resource Metadata
+    MCPServer-->>Client: Auth Server URI + Supported Scopes
+
+    Client->>AuthServer: Discover OAuth/OpenID Config
+    AuthServer-->>Client: authorize endpoint, token endpoint, issuer
+
+    alt Pre-Registered Client
+        Client->>AuthServer: Use Existing Client Registration
+    else Dynamic Client Registration
+        Client->>AuthServer: Dynamic Client Registration (DCR)
+    end
+
+    Client->>AuthServer: /authorize
+    AuthServer-->>Client: Access Token + Refresh Token
+
+    Client->>MCPServer: Authenticated Request + Access Token
+    MCPServer->>AuthServer: Verify Token
+    AuthServer-->>MCPServer: Token Valid
+    MCPServer-->>Client: Protected Resource Response
+```
+
+## Primitive & Capability Relationship
+
+```mermaid
+flowchart LR
+
+    Primitive["Primitive / Capability"]
+
+    Primitive --> ServerCapabilities["Server Capabilities"]
+    Primitive --> ClientCapabilities["Client Capabilities"]
+
+    ServerCapabilities --> Tools
+    ServerCapabilities --> Resources
+    ServerCapabilities --> Prompts
+
+    ClientCapabilities --> Sampling
+    ClientCapabilities --> Elicitation
+    ClientCapabilities --> Logging
+```
+
+## Developer Tooling
+
+```mermaid
+flowchart TB
+
+    Developer["Developer"]
+        --> Inspector["MCP Inspector"]
+        --> Debugging["Debugging"]
+        --> Testing["Capability Testing"]
+        --> SessionTracing["Session Tracing"]
+```
+
+## MCP Security Risks & Mitigations
+
+```mermaid
+flowchart TD
+
+    SSRF["SSRF"]
+    Hijack["Session Hijacking"]
+    Token["Token Passthrough"]
+    Local["Local MCP Compromise"]
+    Scope["Scope Minimization"]
+
+    SSRF --> SSRFMitigation["HTTPS<br/>IP Whitelist<br/>Validate Redirect URI"]
+
+    Hijack --> HijackMitigation["Do NOT use session for authentication"]
+
+    Token --> TokenMitigation["Verify token issuer"]
+
+    Local --> LocalMitigation["Validate user input<br/>Prevent dangerous commands"]
+
+    Scope --> ScopeMitigation["Limit OAuth scopes"]
+```    
