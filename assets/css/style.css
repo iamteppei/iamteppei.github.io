@@ -7,11 +7,18 @@
 :root {
   --bg: #f5f7fa;
   --surface: #ffffff;
-  --text: #1f2933;
-  --muted: #52606d;
-  --border: #d9e2ec;
-  --accent: #1864ab;
-  --accent-hover: #0b4f88;
+  --text: #1a202c;
+  --muted: #4a5568;
+  --border: #cbd5e0;
+  --accent: #1a5cad;
+  --accent-hover: #0b4a94;
+  --code-bg: #edf2f7;
+  --code-text: #9b2335;
+  --pre-bg: #0f2237;
+  --pre-text: #e2e8f0;
+  --radius: 8px;
+  --transition: 150ms ease;
+  --header: #6F00FF
 }
 
 html {
@@ -62,13 +69,13 @@ body {
 .container {
   max-width: 860px;
   margin: 0 auto;
-  padding: 0 1.25rem;
 }
 
 .header-content {
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 1.5rem;
+  background: var(--header);
+  border-bottom: 2px solid var(--header);
+  margin-bottom: 1.75rem;
+  color: white;
 }
 
 header {
@@ -86,7 +93,37 @@ header h1 a {
 }
 
 header p {
-  color: var(--muted);
+  /* color: var(--muted); */
+  font-size: 0.95rem;
+}
+
+/* Site brand: avatar + title/description */
+.site-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.site-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border);
+  flex-shrink: 0;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.site-brand:hover .site-avatar,
+.site-brand:focus-within .site-avatar {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(26, 92, 173, 0.12);
+}
+
+.site-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
 
 main {
