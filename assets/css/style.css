@@ -1,3 +1,6 @@
+/* ============================
+   Base & Custom Properties
+   ============================ */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -5,7 +8,7 @@
 }
 
 :root {
-  --bg: #f5f7fa;
+  --bg: #f4f6f9;
   --surface: #ffffff;
   --text: #1a202c;
   --muted: #4a5568;
@@ -29,21 +32,29 @@ body {
   font-family:
     -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
     Cantarell, sans-serif;
-  line-height: 1.7;
+  font-size: 1.0625rem; /* 17px */
+  line-height: 1.75;
   color: var(--text);
   background: var(--bg);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
+/* ============================
+   Accessibility
+   ============================ */
 .skip-link {
   position: absolute;
   left: 1rem;
-  top: -48px;
-  padding: 0.6rem 1rem;
+  top: -52px;
+  padding: 0.65rem 1.1rem;
   border-radius: 0 0 6px 6px;
   text-decoration: none;
   background: var(--text);
   color: #fff;
+  font-weight: 600;
   z-index: 1000;
+  transition: top var(--transition);
 }
 
 .skip-link:focus {
@@ -51,8 +62,9 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 3px solid var(--accent);
   outline-offset: 3px;
+  border-radius: 3px;
 }
 
 .visually-hidden {
@@ -66,6 +78,9 @@ body {
   white-space: nowrap;
 }
 
+/* ============================
+   Layout
+   ============================ */
 .container {
   max-width: 860px;
   margin: 0 auto;
@@ -79,17 +94,23 @@ body {
 }
 
 header {
-  padding: 2rem 0 1.5rem;
+  padding: 1.75rem 0 1.25rem;
 }
 
 header h1 {
-  font-size: 2rem;
-  margin-bottom: 0.25rem;
+  font-size: 1.75rem;
+  margin-bottom: 0.2rem;
+  letter-spacing: -0.01em;
 }
 
 header h1 a {
   color: inherit;
   text-decoration: none;
+  transition: color var(--transition);
+}
+
+header h1 a:hover {
+  color: var(--accent);
 }
 
 header p {
@@ -127,20 +148,23 @@ header p {
 }
 
 main {
-  min-height: calc(100vh - 240px);
+  min-height: calc(100vh - 220px);
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
+  border-radius: var(--radius);
+  padding: 2rem;
+  margin-bottom: 1.75rem;
 }
 
+/* ============================
+   Blog List (Home)
+   ============================ */
 .blog-list {
   list-style: none;
 }
 
 .blog-item {
-  padding: 1.25rem 0;
+  padding: 1.5rem 0;
   border-bottom: 1px solid var(--border);
 }
 
@@ -149,43 +173,56 @@ main {
 }
 
 .blog-item h3 {
-  font-size: 1.45rem;
+  font-size: 1.35rem;
   line-height: 1.35;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.3rem;
+  letter-spacing: -0.01em;
 }
 
 .blog-item h3 a {
   color: inherit;
   text-decoration: none;
+  transition: color var(--transition);
 }
 
 .blog-item h3 a:hover {
   color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .blog-meta {
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   margin-bottom: 0.5rem;
 }
 
 .blog-excerpt {
-  margin-bottom: 0.6rem;
-  color: #334e68;
+  margin-bottom: 0.75rem;
+  color: var(--muted);
+  line-height: 1.65;
 }
 
-.read-more,
-.back-link,
-.post-content a {
+.read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
   color: var(--accent);
+  font-weight: 500;
+  font-size: 0.9375rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition), gap var(--transition);
 }
 
-.read-more:hover,
-.back-link:hover,
-.post-content a:hover {
+.read-more:hover {
   color: var(--accent-hover);
+  gap: 0.4rem;
 }
 
+/* ============================
+   Pagination
+   ============================ */
 .pagination {
   margin-top: 1.5rem;
   padding-top: 1rem;
@@ -199,35 +236,56 @@ main {
 
 .pagination-link {
   color: var(--accent);
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition);
+}
+
+.pagination-link:hover {
+  color: var(--accent-hover);
 }
 
 .pagination-link.disabled {
   color: #9aa5b1;
+  text-decoration: none;
+  cursor: default;
+  pointer-events: none;
 }
 
 .pagination-info {
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
 }
 
+/* ============================
+   Post Layout
+   ============================ */
 .post {
-  max-width: 760px;
+  max-width: 720px;
   margin: 0 auto;
 }
 
 .post-header {
-  padding-bottom: 0.75rem;
-  margin-bottom: 1.25rem;
-  border-bottom: 1px solid var(--border);
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--border);
 }
 
 .post-title {
   font-size: 2rem;
-  line-height: 1.25;
-  margin-bottom: 0.4rem;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
 }
 
+.post-meta {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ============================
+   Post Content Typography
+   ============================ */
 .post-content {
   word-break: break-word;
 }
@@ -238,73 +296,169 @@ main {
 .post-content pre,
 .post-content blockquote,
 .post-content table,
-.post-content hr {
-  margin-bottom: 1rem;
+.post-content hr,
+.post-content figure {
+  margin-bottom: 1.25rem;
 }
 
 .post-content h2,
-.post-content h3 {
-  margin: 1.5rem 0 0.75rem;
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+  margin: 2rem 0 0.75rem;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
 }
+
+.post-content h2 { font-size: 1.6rem; }
+.post-content h3 { font-size: 1.3rem; }
+.post-content h4 { font-size: 1.1rem; }
+.post-content h5 { font-size: 1rem; font-weight: 700; }
+.post-content h6 { font-size: 0.9rem; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
 
 .post-content ul,
 .post-content ol {
   margin-left: 1.5rem;
 }
 
+/* Links — always underlined so they are distinguishable without color */
+.post-content a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition);
+}
+
+.post-content a:hover {
+  color: var(--accent-hover);
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--accent);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition), gap var(--transition);
+}
+
+.back-link:hover {
+  color: var(--accent-hover);
+  gap: 0.4rem;
+}
+
+/* Inline code */
 .post-content code {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
-  background: #f0f4f8;
-  padding: 0.1rem 0.35rem;
+  font-size: 0.875em;
+  background: var(--code-bg);
+  color: var(--code-text);
+  padding: 0.15rem 0.4rem;
   border-radius: 4px;
+  border: 1px solid var(--border);
 }
 
+/* Code blocks */
 .post-content pre {
-  background: #102a43;
-  color: #f0f4f8;
-  padding: 0.9rem;
-  border-radius: 6px;
+  background: var(--pre-bg);
+  color: var(--pre-text);
+  padding: 1.1rem 1.25rem;
+  border-radius: var(--radius);
   overflow-x: auto;
+  font-size: 0.9rem;
+  line-height: 1.6;
 }
 
 .post-content pre code {
   background: transparent;
-  padding: 0;
   color: inherit;
+  padding: 0;
+  border: none;
+  font-size: inherit;
 }
 
+/* Blockquote */
 .post-content blockquote {
-  border-left: 3px solid var(--accent);
-  padding-left: 0.9rem;
-  color: #334e68;
+  border-left: 4px solid var(--accent);
+  padding: 0.75rem 1rem;
+  background: rgba(26, 92, 173, 0.05);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  color: var(--muted);
+  font-style: italic;
 }
 
+.post-content blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Horizontal rule */
+.post-content hr {
+  border: none;
+  border-top: 2px solid var(--border);
+  margin: 2rem 0;
+}
+
+/* Images */
 .post-content img {
   display: block;
   max-width: 100%;
   height: auto;
-  margin: 1.25rem auto;
+  margin: 1.5rem auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
 }
 
+.post-content figcaption {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--muted);
+  margin-top: -0.75rem;
+  margin-bottom: 1.25rem;
+  font-style: italic;
+}
+
+/* Tables */
 .post-content table {
   display: block;
   overflow-x: auto;
   width: 100%;
   border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.post-content table th {
+  background: var(--bg);
+  font-weight: 600;
+  color: var(--text);
 }
 
 .post-content table th,
 .post-content table td {
   border: 1px solid var(--border);
-  padding: 0.5rem 0.65rem;
+  padding: 0.6rem 0.85rem;
   text-align: left;
 }
 
-.post-footer {
-  margin-top: 1.75rem;
+.post-content table tr:nth-child(even) td {
+  background: var(--bg);
 }
 
+/* ============================
+   Post Footer
+   ============================ */
+.post-footer {
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ============================
+   Site Footer
+   ============================ */
 .footer-content {
   border-top: 1px solid var(--border);
   background: var(--surface);
@@ -317,28 +471,67 @@ footer {
 
 footer p {
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: 0.875rem;
 }
 
+/* ============================
+   Responsive
+   ============================ */
 @media (max-width: 640px) {
   header h1 {
-    font-size: 1.6rem;
+    font-size: 1.45rem;
   }
 
   main {
-    padding: 1.1rem;
+    padding: 1.25rem 1rem;
+    border-radius: 6px;
   }
 
   .blog-item h3 {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
   }
 
   .post-title {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
+
+  .post-content h2 { font-size: 1.35rem; }
+  .post-content h3 { font-size: 1.15rem; }
 
   .pagination {
     flex-direction: column;
     align-items: flex-start;
+  }
+}
+
+/* ============================
+   Dark Mode
+   ============================ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --border: #30363d;
+    --accent: #4c9be8;
+    --accent-hover: #79c0ff;
+    --code-bg: #1c2128;
+    --code-text: #f9826c;
+    --pre-bg: #010409;
+    --pre-text: #e6edf3;
+  }
+
+  .post-content blockquote {
+    background: rgba(76, 155, 232, 0.08);
+  }
+
+  .post-content table tr:nth-child(even) td {
+    background: #1c2128;
+  }
+
+  .site-brand:hover .site-avatar,
+  .site-brand:focus-within .site-avatar {
+    box-shadow: 0 0 0 4px rgba(76, 155, 232, 0.18);
   }
 }
