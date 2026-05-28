@@ -3,6 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#1a5cad" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)" />
     {% assign page_title = page.title | default: site.title %}
     {% assign page_description = page.description | default: site.description %}
     {% assign canonical_url = page.url | absolute_url %}
@@ -49,14 +52,26 @@
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <header role="banner" class="header-content">
       <div class="container">
-        <h1>
-          <a
-            href="{{ '/' | relative_url }}"
-            aria-label="{{ site.title }} – go to home"
-            >{{ site.title }}</a
-          >
-        </h1>
-        <p>{{ site.description }}</p>
+        <div class="site-brand">
+          <img
+            src="{{ '/assets/image/avatar.jpg' | relative_url }}"
+            alt=""
+            class="site-avatar"
+            width="56"
+            height="56"
+            aria-hidden="true"
+          />
+          <div class="site-info">
+            <h1>
+              <a
+                href="{{ '/' | relative_url }}"
+                aria-label="{{ site.title }} – go to home"
+                >{{ site.title }}</a
+              >
+            </h1>
+            <p>{{ site.description }}</p>
+          </div>
+        </div>
       </div>
     </header>
 

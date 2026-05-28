@@ -6,6 +6,10 @@ layout: default
     <h1 class="post-title" id="post-title">{{ page.title }}</h1>
     <p class="post-meta">
       <time datetime="{{ page.date | date_to_xmlschema }}" aria-label="Published {{ page.date | date: '%B %d, %Y' }}">{{ page.date | date: "%B %d, %Y" }}</time>
+      {%- assign words = content | number_of_words -%}
+      {%- assign reading_minutes = words | divided_by: 200 | at_least: 1 -%}
+      <span aria-hidden="true"> &middot; </span>
+      <span aria-label="{{ reading_minutes }} minute read">{{ reading_minutes }} min read</span>
     </p>
   </header>
 
