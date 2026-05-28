@@ -462,6 +462,7 @@ main {
 .footer-content {
   border-top: 1px solid var(--border);
   background: var(--surface);
+  margin-bottom: 1.75rem;
 }
 
 footer {
