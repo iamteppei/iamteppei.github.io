@@ -24,7 +24,7 @@ paginate_path: "/page:num/"
 # Google Analytics
 # Add your Google Analytics 4 measurement ID here (format: G-XXXXXXXXXX)
 # Leave empty in version control and set environment-specific values via config overlays
-google_analytics: ""
+google_analytics: "G-VMRGNFZPHV"
 
 # Exclude from build
 exclude:
