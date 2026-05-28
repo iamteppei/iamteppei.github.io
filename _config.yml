@@ -35,3 +35,5 @@ exclude:
   - Gemfile.lock
   - vendor
   - _posts/POST_ORGANIZATION_GUIDE.md
+
+excerpt_separator: "<!--more-->"

@@ -19,7 +19,7 @@ title: Home
       <p class="blog-meta">
         <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
       </p>
-      <p class="blog-excerpt">{{ post.excerpt | strip_html | truncate: excerpt_length }}</p>
+      <p class="blog-excerpt">{{ post.excerpt | strip_html }}</p>
       <a href="{{ post.url | relative_url }}" class="read-more">Read more<span class="visually-hidden"> about {{ post.title }}</span> &rarr;</a>
     </li>
     {% endfor %}
