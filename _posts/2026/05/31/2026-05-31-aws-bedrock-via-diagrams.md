@@ -14,14 +14,16 @@ Amazon Bedrock explained through diagrams, from core generative AI concepts to p
 
 ## Knowledge base
 
+Knowledge base is information that retrieval system searches when answerning user's question
 
 ![KnowledgeBase]({{ '/assets/posts/2026/05/31/images/aws_bedrock_knowledgebase_v2.png' | relative_url }})
 
-
-Token embedding
+Token embedding: how tokenization and embedding work
 
 ![Tokenembedding]({{ '/assets/posts/2026/05/31/images/aws_bedrock_embedding.png' | relative_url }})
 
 ## BedRock - Agent
+
+
 
 ![Agent]({{ '/assets/posts/2026/05/31/images/aws_bedrock_agent.png' | relative_url }})
