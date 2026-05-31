@@ -2,8 +2,12 @@
 layout: post
 title: "OAuth vs OIDC vs SAML"
 date: 2026-02-21 10:00:00 +0000
+description: "A guide to understanding the differences between OAuth, OIDC, and SAML authentication protocols"
+image: /assets/posts/2026/05/27/images/oauth-oidc-saml.svg
+image_alt: "Comparison diagram showing OAuth, OIDC, and SAML protocols and their purposes"
+author: "Teppei"
+categories: [OAuth, Authentication, Security]
 mermaid: true
-categories: OAuth Authentication
 ---
 
 OAuth, OIDC, and SAML are all identity and access management standards, but they serve different purposes. OAuth handles authorization by letting apps access resources on a user’s behalf without sharing passwords. OIDC builds on OAuth to provide authentication, confirming a user’s identity through ID tokens. SAML is an older protocol mainly used for enterprise single sign-on (SSO), allowing users to log in once and securely access multiple organisational applications.

@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Model Context Protocol architecture</title>
+  <desc id="desc">A diagram showing AI clients connecting through the MCP protocol to external tools and systems.</desc>
+
+  <defs>
+    <linearGradient id="header" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1a5cad" />
+      <stop offset="100%" stop-color="#123b6d" />
+    </linearGradient>
+    <linearGradient id="client" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4f8fe8" />
+      <stop offset="100%" stop-color="#2f6fc9" />
+    </linearGradient>
+    <linearGradient id="server" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5f7cf0" />
+      <stop offset="100%" stop-color="#3f58c8" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="#f4f7fb" />
+  <rect x="0" y="0" width="1200" height="104" fill="url(#header)" />
+  <text x="600" y="66" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700" text-anchor="middle">
+    Understanding MCP via Diagrams
+  </text>
+
+  <rect x="52" y="154" width="280" height="404" rx="20" fill="#ffffff" stroke="#d6e1f0" stroke-width="2" />
+  <text x="192" y="204" fill="#1d2733" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" text-anchor="middle">
+    AI Clients
+  </text>
+  <rect x="82" y="246" width="220" height="64" rx="14" fill="url(#client)" />
+  <text x="192" y="284" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="middle">
+    Claude / LLMs
+  </text>
+  <rect x="82" y="334" width="220" height="64" rx="14" fill="url(#client)" />
+  <text x="192" y="372" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="middle">
+    Apps and IDEs
+  </text>
+  <text x="192" y="462" fill="#5f6b7a" font-family="Arial, Helvetica, sans-serif" font-size="20" text-anchor="middle">
+    Ask for context,
+  </text>
+  <text x="192" y="490" fill="#5f6b7a" font-family="Arial, Helvetica, sans-serif" font-size="20" text-anchor="middle">
+    tools, and data
+  </text>
+
+  <rect x="378" y="154" width="444" height="404" rx="20" fill="#ffffff" stroke="#d6e1f0" stroke-width="2" />
+  <text x="600" y="204" fill="#1d2733" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" text-anchor="middle">
+    MCP Protocol
+  </text>
+  <rect x="420" y="246" width="160" height="56" rx="12" fill="#eef4ff" stroke="#7aa5eb" stroke-width="2" />
+  <text x="500" y="280" fill="#203040" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" text-anchor="middle">
+    Requests
+  </text>
+  <rect x="620" y="246" width="160" height="56" rx="12" fill="#eef4ff" stroke="#7aa5eb" stroke-width="2" />
+  <text x="700" y="280" fill="#203040" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" text-anchor="middle">
+    Responses
+  </text>
+  <rect x="420" y="330" width="160" height="56" rx="12" fill="#eef4ff" stroke="#7aa5eb" stroke-width="2" />
+  <text x="500" y="364" fill="#203040" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" text-anchor="middle">
+    Resources
+  </text>
+  <rect x="620" y="330" width="160" height="56" rx="12" fill="#eef4ff" stroke="#7aa5eb" stroke-width="2" />
+  <text x="700" y="364" fill="#203040" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" text-anchor="middle">
+    Tools
+  </text>
+  <text x="600" y="448" fill="#5f6b7a" font-family="Arial, Helvetica, sans-serif" font-size="20" text-anchor="middle">
+    JSON-RPC over stdio, HTTP, or WebSocket
+  </text>
+  <text x="600" y="486" fill="#7d8794" font-family="Arial, Helvetica, sans-serif" font-size="18" text-anchor="middle">
+    A standard bridge between models and external systems
+  </text>
+
+  <rect x="868" y="154" width="280" height="404" rx="20" fill="#ffffff" stroke="#d6e1f0" stroke-width="2" />
+  <text x="1008" y="204" fill="#1d2733" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" text-anchor="middle">
+    MCP Servers
+  </text>
+  <rect x="898" y="246" width="220" height="64" rx="14" fill="url(#server)" />
+  <text x="1008" y="284" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="middle">
+    Databases and APIs
+  </text>
+  <rect x="898" y="334" width="220" height="64" rx="14" fill="url(#server)" />
+  <text x="1008" y="372" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" text-anchor="middle">
+    Files and Services
+  </text>
+  <text x="1008" y="462" fill="#5f6b7a" font-family="Arial, Helvetica, sans-serif" font-size="20" text-anchor="middle">
+    Expose capabilities
+  </text>
+  <text x="1008" y="490" fill="#5f6b7a" font-family="Arial, Helvetica, sans-serif" font-size="20" text-anchor="middle">
+    and live context
+  </text>
+
+  <line x1="332" y1="356" x2="378" y2="356" stroke="#7a8898" stroke-width="4" />
+  <polygon points="378,356 364,348 364,364" fill="#7a8898" />
+  <line x1="822" y1="356" x2="868" y2="356" stroke="#7a8898" stroke-width="4" />
+  <polygon points="868,356 854,348 854,364" fill="#7a8898" />
+</svg>

@@ -201,6 +201,121 @@ assets/posts/YYYY/MM/DD/files/filename.pdf
 [Download]({{ '/assets/posts/YYYY/MM/DD/files/filename.pdf' | relative_url }})
 ```
 
+## Social Media Sharing Metadata
+
+Posts are automatically optimized for sharing on X (formerly Twitter), Facebook, LinkedIn, and other social networks. The site uses Open Graph and Twitter Card metadata to control how your posts appear when shared.
+
+### Supported Front Matter Fields
+
+Add these optional fields to your post's YAML front matter to customize social media sharing:
+
+```markdown
+---
+layout: post
+title: "My Post Title"
+date: 2026-01-30 10:00:00 +0000
+description: "A compelling summary of the post (used in previews)"
+image: /assets/posts/2026/01/30/images/featured-image.jpg
+image_alt: "Alternative text describing the image for accessibility"
+author: "Your Name"
+categories: [category1, category2]
+---
+```
+
+### Field Descriptions
+
+| Field | Purpose | Platform | Required? |
+|-------|---------|----------|-----------|
+| `title` | Post heading | All | ✅ Yes |
+| `description` | 160-character summary | All | Optional (falls back to site description) |
+| `image` | Featured image for social preview | X, Facebook, LinkedIn | Optional (uses site default) |
+| `image_alt` | Alt text for the image | All (accessibility) | Optional |
+| `author` | Author attribution | Facebook, LinkedIn | Optional (uses site default) |
+| `date` | Publication timestamp | Facebook, LinkedIn | ✅ Yes |
+| `categories` | Post categories/tags | Facebook | Optional |
+
+### Image Specifications
+
+**Recommended Image Dimensions:**
+- **X/Twitter**: 1200×630px (16:9 ratio)
+- **Facebook/LinkedIn**: 1200×627px (1.91:1 ratio)
+- **Pinterest**: 1000×1500px (2:3 ratio)
+
+**Best Practices:**
+- Keep file size under 500KB
+- Use PNG or JPG format
+- Include text and branding in the image for better visibility
+- Test with [Twitter Card Validator](https://cards-dev.twitter.com/validator) and [Facebook Share Debugger](https://developers.facebook.com/tools/debug/sharing)
+
+### Example Post with Social Metadata
+
+```markdown
+---
+layout: post
+title: "OAuth vs OIDC vs SAML"
+date: 2026-05-27 10:00:00 +0000
+description: "A guide to understanding the differences between OAuth, OIDC, and SAML authentication protocols"
+image: /assets/posts/2026/05/27/images/oauth-oidc-saml-comparison.png
+image_alt: "Comparison diagram of OAuth, OIDC, and SAML protocols"
+author: "Teppei"
+categories: [OAuth, Authentication, Security]
+mermaid: true
+---
+
+Your post content...
+```
+
+### What Gets Shared
+
+**When shared on X/Twitter:**
+- Post title
+- Description (excerpt or first 160 characters)
+- Featured image
+- Link to your post
+- Author mention (@iamteppei)
+
+**When shared on Facebook/LinkedIn:**
+- Post title
+- Description
+- Featured image
+- Publication date
+- Author name
+- Category/topic tags
+
+**When shared in email or messaging apps:**
+- Headline
+- Description excerpt
+- Featured image thumbnail
+- Direct link to post
+
+### Fallback Behavior
+
+If you don't specify certain fields:
+- **Missing `image`**: Uses site's default share image from `/assets/image/default-share.jpg`
+- **Missing `description`**: Uses site description from `_config.yml`
+- **Missing `author`**: Uses `site.social.author` from `_config.yml` (currently: "Teppei")
+- **Missing `image_alt`**: No alt text is added (set one for accessibility)
+
+### Social Media Configuration
+
+Update `_config.yml` social settings to customize:
+```yaml
+social:
+  twitter_handle: "iamteppei"     # Your X/Twitter handle
+  author: "Teppei"                # Default author name
+  default_image: "/assets/image/default-share.jpg"  # Fallback image
+```
+
+### Testing Your Metadata
+
+Before publishing, validate your sharing metadata:
+
+1. **X/Twitter**: [Twitter Card Validator](https://cards-dev.twitter.com/validator)
+2. **Facebook**: [Share Debugger](https://developers.facebook.com/tools/debug/sharing)
+3. **LinkedIn**: [Post Inspector](https://www.linkedin.com/post-inspector/)
+
+Copy your published post URL and paste it into these tools to preview how it will appear when shared.
+
 ## Notes
 
 - Jekyll will find posts in any subdirectory of `_posts/`

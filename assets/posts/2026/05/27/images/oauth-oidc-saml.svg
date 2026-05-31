@@ -1,0 +1,72 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="headerGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#f5f7fa"/>
+  
+  <!-- Header bar -->
+  <rect width="1200" height="120" fill="url(#headerGradient)"/>
+  
+  <!-- Title -->
+  <text x="600" y="85" font-family="system-ui, -apple-system, sans-serif" font-size="56" font-weight="bold" fill="white" text-anchor="middle">
+    OAuth vs OIDC vs SAML
+  </text>
+  
+  <!-- OAuth Section -->
+  <g filter="url(#shadow)">
+    <rect x="60" y="160" width="340" height="420" fill="white" rx="8" stroke="#e0e7ff" stroke-width="2"/>
+    <circle cx="230" cy="220" r="40" fill="#667eea"/>
+    <text x="230" y="228" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="white" text-anchor="middle" font-weight="bold">OAuth</text>
+    
+    <text x="80" y="300" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="bold" fill="#333">Purpose:</text>
+    <text x="80" y="330" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#666">Authorization</text>
+    
+    <text x="80" y="370" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="bold" fill="#333">Question:</text>
+    <text x="80" y="400" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#666">Can this app act on</text>
+    <text x="80" y="420" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#666">your behalf?</text>
+    
+    <text x="80" y="460" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="bold" fill="#333">Token:</text>
+    <text x="80" y="490" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#666">Access Token</text>
+  </g>
+  
+  <!-- OIDC Section -->
+  <g filter="url(#shadow)">
+    <rect x="430" y="160" width="340" height="420" fill="white" rx="8" stroke="#e0e7ff" stroke-width="2"/>
+    <circle cx="600" cy="220" r="40" fill="#764ba2"/>
+    <text x="600" y="228" font-family="system-ui, -apple-system, sans-serif" font-size="22" fill="white" text-anchor="middle" font-weight="bold">OIDC</text>
+    
+    <text x="450" y="300" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="bold" fill="#333">Purpose:</text>
+    <text x="450" y="330" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#666">Authentication</text>
+    
+    <text x="450" y="370" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="bold" fill="#333">Question:</text>
+    <text x="450" y="400" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#666">Who are you?</text>
+    
+    <text x="450" y="460" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="bold" fill="#333">Token:</text>
+    <text x="450" y="490" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#666">ID Token +</text>
+    <text x="450" y="510" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#666">Access Token</text>
+  </g>
+  
+  <!-- SAML Section -->
+  <g filter="url(#shadow)">
+    <rect x="800" y="160" width="340" height="420" fill="white" rx="8" stroke="#e0e7ff" stroke-width="2"/>
+    <circle cx="970" cy="220" r="40" fill="#f093fb"/>
+    <text x="970" y="228" font-family="system-ui, -apple-system, sans-serif" font-size="22" fill="white" text-anchor="middle" font-weight="bold">SAML</text>
+    
+    <text x="820" y="300" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="bold" fill="#333">Purpose:</text>
+    <text x="820" y="330" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#666">Single Sign-On</text>
+    
+    <text x="820" y="370" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="bold" fill="#333">Question:</text>
+    <text x="820" y="400" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#666">Are you allowed in?</text>
+    
+    <text x="820" y="460" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="bold" fill="#333">Token:</text>
+    <text x="820" y="490" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#666">XML Assertion</text>
+  </g>
+</svg>

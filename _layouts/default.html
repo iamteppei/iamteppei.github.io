@@ -9,17 +9,35 @@
     {% assign page_title = page.title | default: site.title %}
     {% assign page_description = page.description | default: site.description %}
     {% assign canonical_url = page.url | absolute_url %}
+    {% assign page_image = page.image | default: site.social.default_image %}
+    {% assign page_image_url = page_image | absolute_url %}
+    {% assign page_author = page.author | default: site.social.author %}
     <title>{% if page.title %}{{ page_title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
     <meta name="description" content="{{ page_description }}" />
     <link rel="canonical" href="{{ canonical_url }}" />
+    
+    <!-- Open Graph Tags (Facebook, LinkedIn, Pinterest) -->
     <meta property="og:title" content="{{ page_title }}" />
     <meta property="og:description" content="{{ page_description }}" />
     <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}" />
     <meta property="og:url" content="{{ canonical_url }}" />
     <meta property="og:site_name" content="{{ site.title }}" />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content="{{ page_image_url }}" />
+    {% if page.image_alt %}<meta property="og:image:alt" content="{{ page.image_alt }}" />{% endif %}
+    {% if page.layout == 'post' %}
+      <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}" />
+      {% if page.last_modified_at %}<meta property="article:modified_time" content="{{ page.last_modified_at | date_to_xmlschema }}" />{% endif %}
+      <meta property="article:author" content="{{ page_author }}" />
+      {% if page.categories %}<meta property="article:section" content="{{ page.categories | join: ', ' }}" />{% endif %}
+    {% endif %}
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="{{ page_title }}" />
     <meta name="twitter:description" content="{{ page_description }}" />
+    <meta name="twitter:image" content="{{ page_image_url }}" />
+    {% if page.image_alt %}<meta name="twitter:image:alt" content="{{ page.image_alt }}" />{% endif %}
+    {% if site.social.twitter_handle %}<meta name="twitter:creator" content="@{{ site.social.twitter_handle }}" />{% endif %}
     <link rel="alternate" type="application/atom+xml" title="{{ site.title }} Feed" href="{{ '/feed.xml' | relative_url }}" />
     <link
       rel="stylesheet"
