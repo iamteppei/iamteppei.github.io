@@ -15,12 +15,12 @@ Amazon Bedrock explained through diagrams, from core generative AI concepts to p
 ## Knowledge base
 
 
-![KnowledgeBase]({{ '/assets/posts/2026/05/31/images/aws_bedrock_knowledgebase.png' | relative_url }})
+![KnowledgeBase]({{ '/assets/posts/2026/05/31/images/aws_bedrock_knowledgebase_v2.png' | relative_url }})
 
 
 Token embedding
 
-![Tokenembedding]({{ '/assets/posts/2026/05/31/images/aws_bedrock_knowledgebase.png' | relative_url }})
+![Tokenembedding]({{ '/assets/posts/2026/05/31/images/aws_bedrock_embedding.png' | relative_url }})
 
 ## BedRock - Agent
 
