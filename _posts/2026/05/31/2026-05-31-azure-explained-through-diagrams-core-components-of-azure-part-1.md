@@ -19,11 +19,11 @@ How Azure organize resources:
 ```mermaid
 
 graph LR
-    G["`Geography`"] --> Region
-    Region --> A["`**Available Zone**
+    G["`Geography`"] -->|Contains| Region
+    Region --> |Contains| A["`**Available Zone**
         - Physical separate datacenter
     `"]
-    A --> D["`**Data Center**
+    A -->|Contains| D["`**Data Center**
         - Servers
         - Cooling
         - Power
@@ -40,7 +40,7 @@ Azure Region & availability zones:
 flowchart LR
 
     subgraph Region["Azure Region (e.g., East US)"]
-
+        direction LR
         subgraph AZ1["Availability Zone 1"]
             DC2["Datacenter(s)"]
         end
@@ -48,10 +48,9 @@ flowchart LR
         subgraph AZ2["Availability Zone 2"]
             DC3["Datacenter(s)"]
         end
-    end
 
-    AZ1 --- Fiber["Connected through high-speed private fiber-optic network"]
-    Fiber --- AZ2
+        AZ1 <---> |Connected through high-speed private fiber-optic network| AZ2
+    end
 ```
 
 Azure region pairs:
@@ -76,10 +75,9 @@ graph LR
             AZ2["Availability Zone 2"]
         end
 
-        AZ1 --> FailOver["`Failedover Replication
-            - 300 miles apart
-        `"]
-        FailOver --> AZ2
+        AZ1 <--> |"`Failedover Replication
+            (300 miles apart)
+        `"| AZ2
     end
 ```
 
