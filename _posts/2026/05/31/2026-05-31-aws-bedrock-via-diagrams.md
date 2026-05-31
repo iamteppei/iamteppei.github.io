@@ -22,7 +22,7 @@ Token embedding: how tokenization and embedding work
 
 ![Tokenembedding]({{ '/assets/posts/2026/05/31/images/aws_bedrock_embedding.png' | relative_url }})
 
-## BedRock - Agent
+## AWS Bedrock - Agent
 
 
 
