@@ -26,6 +26,13 @@ paginate_path: "/page:num/"
 # Leave empty in version control and set environment-specific values via config overlays
 google_analytics: "G-VMRGNFZPHV"
 
+# Social Media & Content Sharing
+# Configure for better social sharing (X, Facebook, LinkedIn, etc.)
+social:
+  twitter_handle: "iamteppei"  # Your X/Twitter handle (without @)
+  author: "Teppei"              # Default author name
+  default_image: "/assets/image/default-share.jpg"  # Fallback image for social sharing
+
 # Exclude from build
 exclude:
   - .bundle
