@@ -150,3 +150,7 @@ graph TD
     Sandbox --> Dev[Development Subscription]
     Sandbox --> Test[Testing Subscription]
 ```
+
+## Reference
+
+- [Azure explained thougth diagrams - identity, access and security part-2](/2026/06/02/2026-06-02-azure-explained-thougth-diagrams-identity-access-and-security-part-2.md)
