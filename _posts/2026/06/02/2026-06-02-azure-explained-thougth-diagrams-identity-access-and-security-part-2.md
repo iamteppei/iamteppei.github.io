@@ -8,15 +8,24 @@ author: "Teppei"
 categories: [Azure, Learning, Cloud]
 ---
 
+About Microsoft directory services including Microsoft Entra ID, Microsoft Entra Domain Service.
+
 <!--more-->
 
 ## Microsoft Entra ID
+
+- A **cloud-based** Identity & Access Management service.
+- It provides services
+  - Authentication: verifying identity & self-service (reset password, MFA, smart lock)
+  - Single sign-on (SSO): 1 identity to access multiple application
+  - Application management: manage cloud & on-premises apps (My App portal)
+  - Device management: register device, enable device-based conditional access
 
 ## Lift-and-shift migration using Microsoft Entra Domain Services
 
 A demonstrated approach to lift-and-shift migration using Microsoft Entra Domain with Microsoft Entra ID and (optionally) on-prem Active Directory.
 
-Migration roadmap: 3 stages (demonstration)
+Migration roadmap: 3 stages (demonstration purpose)
 
 ```mermaid
 flowchart LR
